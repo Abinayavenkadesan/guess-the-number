@@ -1,0 +1,83 @@
+<style>
+ body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+ }
+ .container{
+    background-color: antiquewhite;
+    color: black;
+    border-color: lightcoral;
+    border-width:5px;
+    border-style: inset;
+    text-align: center;
+    margin:20px;
+    padding:50px;
+    width:300px;
+    height:300px;
+ }
+ h1{
+    text-align: center;
+ }
+ #guessnumber{
+    border-color: aquamarine;
+    border-width:5px;
+ }
+ button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-color: aquamarine;
+    border:none;
+    cursor: pointer;
+ }
+ @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+ button:hover {
+            background-color: #218838;
+            animation: pulse 1s infinite;
+        }
+
+</style>
+<div class="container">
+<h1>Guess the number</h1>
+<input id="guessnumber">
+<button onclick="check()" class="abi">check</button>
+<p id="result">You are Wrong/Right</p>
+<p id="score">Score:10</p>
+</div>
+
+<script>
+    //selecing input box
+    var guessnumber = document.getElementById("guessnumber")
+    var result = document.getElementById("result")
+    var score=document.getElementById("score")
+    var randomNumber = Math.floor(Math.random()*10)+1
+    var totalscore=10
+
+    function check()
+    {
+      var enterednumber = guessnumber.value
+      if(randomNumber==enterednumber){
+        console.log("Right")
+        result.textContent="Right"
+        alert("YOU WON...")
+      } 
+      else{
+        totalscore=totalscore-1
+        score.textContent="score:"+totalscore
+        result.textContent="Wrong"
+      }
+    }
+</script>
